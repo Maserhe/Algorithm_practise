@@ -1,77 +1,67 @@
-#include<cstring>
 #include<iostream>
+#include<cstring>
 #include<queue>
-
 using namespace std;
-const int N = 100;
 
-typedef pair<int,int> PII;
-int h[N],idx,e[N],ne[N],w[N];
+const int N = 1000;
 
+typedef pair<int ,int> PII;
+int h[N],e[N],ne[N],w[N],idx; //表头， 节点， 指向下一节点 ， 权值 ， 下标
 int dist[N];
 bool st[N];
-int n , m; //n个点，m条边
+int n , m;
 
-void add(int a, int b, int c){
-    e[idx] = b;  //创建节点
-    ne[idx] = h[a];  //在头部插入节点
-    w[idx] = c;
-    h[a] = idx++;
+void add(int a, int b ,int c){
 
+    e[idx] = a, ne[idx] = h[a], w[idx]  = c, h[a] = idx++ ;
 }
+
 int Dijkstra(){
 
-    priority_queue<PII,vector<PII>,greater<PII> > heap;
+    memset(dist , 0x3f, sizeof dist);
 
-    heap.push({1,0});
+    priority_queue<PII, vector<PII>,greater<PII> > heap;
+
     dist[1] = 0;
-    memset(dist,0x3f,sizeof dist);
+    heap.push({0,1});
+    
+    while(heap.size()){
 
-    while (heap.size())
-    {
-        auto t = heap.top();
+        PII t = heap.top();
         heap.pop();
-        int ver = t.first;
-        int distance = t.second;
+        int ver =t.second;
+        int distance = t.first;
 
         if(st[ver]) continue;
+        st[ver] = true;
 
-        for(int i = h[ver]; i != -1; i = ne[i]){
+        for(int i = h[ver]; i != -1;  i  = ne[i] ){  //顺着节点开始往下找
             int j = e[i];
 
-            if(dist[j]>distance+w[i]) //这里权值
-            {
-                dist[j] = w[i] + distance;
-                heap.push({j,dist[j]});
-               
-            }
+            if(dist[j] > distance + w[i]){
 
+                dist[j] = distance + w[i];
+                heap.push({dist[j],j});
+            }
         }
         
-        
     }
-
     if(dist[n] == 0x3f3f3f3f) return -1;
-    return dist[n];
-
+        return dist[N];
 }
+
 int main(){
+    memset(h, -1 , sizeof h);
     cin>>n>>m;
-
-    memset(h,-1,sizeof h); //表头全部初始化为-1
-
-    while (m--)
+    while (m --)
     {
-        int a, b , c;
-        cin>>a>>b>>c;
+        int a, b, c;
+        scanf("%d%d%d",&a,&b,&c);
         add(a,b,c);
     }
-
     int t = Dijkstra();
-    
     cout<<t;
-
-
     system("pause");
     return 0;
 }
+

@@ -26,8 +26,10 @@ int Bellman(){
 
     }
     if(dist[n] > 0x3f3f3f3f / 2) return -1;
+
     return dist[n];
 }
+
 
 int main(){
 

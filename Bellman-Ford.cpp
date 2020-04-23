@@ -14,12 +14,12 @@ struct Edge{
 int Bellman(){
     memset(dist,0x3f,sizeof dist);
     dist[1] = 0;
+    // 如果第n次迭代仍然会松弛三角不等式，就说明存在一条长度是n+1的最短路径，由抽屉原理，路径中至少存在两个相同的点，说明图中存在负权回路。
     for(int i = 0 ; i < k ; i ++ ){
         memcpy(backup,dist,sizeof dist);
 
         for(int j = 0 ; j < m; j ++ ){
             int a = Edges[j].a, b = Edges[j].b, w = Edges[j].w;
-
             dist[b] = min(dist[b],backup[a] + w);
 
         }

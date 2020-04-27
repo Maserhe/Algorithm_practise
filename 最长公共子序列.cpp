@@ -16,11 +16,9 @@ int main(){
             f[i][j] = max( f[i -1 ][j] , f[i][ j -1 ]);
             if(s[i]== t[j]){
                 f[i][j] = max(  f[i][j], f[i -1 ][j -1] + 1);
-            }
-            
+            }  
         }
     cout<<f[n][m];
     system("pause");
     return 0;
-
 }

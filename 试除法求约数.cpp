@@ -17,7 +17,7 @@ vector<int> get_divisors(int n){
     return res;
 
 }
-int main( ) }{
+int main( ){
 
     int n;
     cin>>n;
@@ -26,7 +26,7 @@ int main( ) }{
         int x ;
         cin>> x;
         auto t = get_divisors(x);
-        for( auto t : res) cout<<t<<" " endl;
+        for( auto res : t) cout<<res<<" "<< endl;
     }
 
     return 0;

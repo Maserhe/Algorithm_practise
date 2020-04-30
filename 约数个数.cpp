@@ -4,7 +4,7 @@
 using namespace std;
 //给出一堆数 ， 求出他们乘积 的 约数 个数之和
 const int mod = 1e5;
-int a[N];
+
 int main(){
     int n;
     cin>>n;

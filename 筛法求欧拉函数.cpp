@@ -1,4 +1,4 @@
-const int N = 1e6;
+int N;
 int primes[N], cnt;     // primes[]存储所有素数
 int euler[N];           // 存储每个数的欧拉函数
 bool st[N];         // st[x]存储x是否被筛掉

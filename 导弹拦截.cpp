@@ -17,7 +17,7 @@ int main(){
         f[i] = 1;
         for( int j  = 0; j < n ; j ++ ){
             if(a[i] >= a[j]){
-                f[i] = max(f[i] , f[j] + 1)
+                f[i] = max(f[i] , f[j] + 1);
             }
         }
         res= max(res, f[i]);
@@ -27,7 +27,7 @@ int main(){
         g[i] = 1;
         for( int j  = 0; j < n ; j ++ ){
             if(a[i] < a[j]){
-                g[i] = max(g[i] , g[j] + 1)
+                g[i] = max(g[i] , g[j] + 1);
             }
         }
         reb= max(reb, g[i]);

@@ -2,7 +2,9 @@
 #include<algorithm>
 
 using namespace std;
-
+/*
+动态规划
+*/
 const int N =100;
 int f[N][N] ;
 

@@ -1,10 +1,16 @@
 #include<vector>
+#include<iostream>
+#include<algorithm>
 using namespace std;
 
 vector<int> alls; // 存储所有待离散化的值
-sort(alls.begin(), alls.end()); // 将所有值排序
-alls.erase(unique(alls.begin(), alls.end()), alls.end());   // 去掉重复元素
+int main(){
+    sort(alls.begin(), alls.end()); // 将所有值排序
+    
+    alls.erase(unique(alls.begin(), alls.end()), alls.end());   // 去掉重复元素
 
+    return 0;
+}
 // 二分求出x对应的离散化的值
 int find(int x) // 找到第一个大于等于x的位置
 {
@@ -15,6 +21,7 @@ int find(int x) // 找到第一个大于等于x的位置
         if (alls[mid] >= x) r = mid;
         else l = mid + 1;
     }
+    sort(alls.begin() ,alls.end());
     return r + 1; // 映射到1, 2, ...n
 }
 
